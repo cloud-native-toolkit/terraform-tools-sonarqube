@@ -104,3 +104,9 @@ variable "toolkit_namespace" {
   description = "Namespace where the toolkit config jobs run."
   default     = ""
 }
+
+variable "persistence" {
+  type        = bool
+  description = "Flag indicating that the resources should be deployed with persistent volumes"
+  default     = true
+}

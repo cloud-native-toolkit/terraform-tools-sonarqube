@@ -16,7 +16,7 @@ locals {
   }
   sonarqube_config = {
     persistence = {
-      enabled = false
+      enabled = var.persistence
       storageClass = var.storage_class
     }
     serviceAccount = {
@@ -37,7 +37,7 @@ locals {
         name = var.service_account_name
       }
       persistence = {
-        enabled = false
+        enabled = var.persistence
         storageClass = var.storage_class
       }
       volumePermissions = {
@@ -65,6 +65,7 @@ locals {
     plugins = {
       install = var.plugins
     }
+    enableTests = false
   }
   service_account_config = {
     name = var.service_account_name
