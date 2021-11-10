@@ -137,7 +137,6 @@ resource "local_file" "sonarqube-values" {
     sonarqube = local.sonarqube_config
     service-account = local.service_account_config
     config-service-account = local.config_service_account_config
-    ocp-route = local.ocp_route_config
     tool-config = local.tool_config
     setup-job = local.job_config
   })
