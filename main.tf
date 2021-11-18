@@ -16,7 +16,7 @@ locals {
   }
   sonarqube_config = {
     persistence = {
-      enabled = false
+      enabled = var.persistence
       storageClass = var.storage_class
     }
     serviceAccount = {

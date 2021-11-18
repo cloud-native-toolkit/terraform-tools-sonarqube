@@ -104,3 +104,9 @@ variable "toolkit_namespace" {
   description = "Namespace where the toolkit config jobs run."
   default     = ""
 }
+
+variable "persistence" {
+  type        = bool
+  description = "Directory where the gitops repo content should be written"
+  default     = true
+}
