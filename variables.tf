@@ -30,6 +30,12 @@ variable "helm_version" {
   default     = "6.4.1"
 }
 
+variable "service_account_name" {
+  description = "The name of the service account that should be used for the deployment"
+  type        = string
+  default     = "sonarqube-sa"
+}
+
 variable "plugins" {
   description = "The list of plugins that will be installed on SonarQube"
   type        = list(string)

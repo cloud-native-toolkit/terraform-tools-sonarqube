@@ -6,8 +6,7 @@ locals {
   service_url  = "http://sonarqube-sonarqube.${var.releases_namespace}:9000"
   secret_name  = "sonarqube-access"
   config_name  = "sonarqube-config"
-  config_sa_name = "sonarqube-config"
-  service_account_name = "sonarqube-sa"
+  config_sa_name = "sonarqube-job-sa"
   gitops_dir   = var.gitops_dir != "" ? var.gitops_dir : "${path.cwd}/gitops"
   chart_dir    = "${local.gitops_dir}/sonarqube"
   global_config    = {
@@ -22,7 +21,7 @@ locals {
     }
     serviceAccount = {
       create = true
-      name = local.service_account_name
+      name = var.service_account_name
     }
     postgresql = {
       enabled = !var.postgresql.external
@@ -35,7 +34,7 @@ locals {
       }
       serviceAccount = {
         enabled = true
-        name = local.service_account_name
+        name = var.service_account_name
       }
       persistence = {
         enabled = false
@@ -68,7 +67,7 @@ locals {
     }
   }
   service_account_config = {
-    name = local.service_account_name
+    name = var.service_account_name
     create = false
     sccs = ["anyuid", "privileged"]
   }
