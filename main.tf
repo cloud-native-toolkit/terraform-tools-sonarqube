@@ -7,6 +7,7 @@ locals {
   secret_name  = "sonarqube-access"
   config_name  = "sonarqube-config"
   config_sa_name = "sonarqube-config"
+  service_account_name = "sonarqube-sa"
   gitops_dir   = var.gitops_dir != "" ? var.gitops_dir : "${path.cwd}/gitops"
   chart_dir    = "${local.gitops_dir}/sonarqube"
   global_config    = {
@@ -21,7 +22,7 @@ locals {
     }
     serviceAccount = {
       create = true
-      name = var.service_account_name
+      name = local.service_account_name
     }
     postgresql = {
       enabled = !var.postgresql.external
@@ -34,7 +35,7 @@ locals {
       }
       serviceAccount = {
         enabled = true
-        name = var.service_account_name
+        name = local.service_account_name
       }
       persistence = {
         enabled = false
@@ -67,7 +68,7 @@ locals {
     }
   }
   service_account_config = {
-    name = var.service_account_name
+    name = local.service_account_name
     create = false
     sccs = ["anyuid", "privileged"]
   }
@@ -132,7 +133,7 @@ resource null_resource print_toolkit_namespace {
   }
 }
 
-resource "null_resource" "setup-chart" {
+resource null_resource setup-chart {
   depends_on = [null_resource.print_toolkit_namespace]
 
   provisioner "local-exec" {
@@ -140,7 +141,7 @@ resource "null_resource" "setup-chart" {
   }
 }
 
-resource "local_file" "sonarqube-values" {
+resource local_file sonarqube-values {
   content  = yamlencode({
     global = local.global_config
     sonarqube = local.sonarqube_config
@@ -153,9 +154,13 @@ resource "local_file" "sonarqube-values" {
   filename = "${local.chart_dir}/values.yaml"
 }
 
-resource "null_resource" "print-values" {
+resource null_resource print-chart {
   provisioner "local-exec" {
     command = "cat ${local_file.sonarqube-values.filename}"
+  }
+
+  provisioner "local-exec" {
+    command = "${module.setup_clis.bin_dir}/helm template sonarqube ${local.chart_dir} -n ${var.releases_namespace}"
   }
 }
 

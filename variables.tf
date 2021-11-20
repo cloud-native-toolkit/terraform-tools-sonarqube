@@ -30,12 +30,6 @@ variable "helm_version" {
   default     = "6.4.1"
 }
 
-variable "service_account_name" {
-  description = "The name of the service account that should be used for the deployment"
-  type        = string
-  default     = "sonarqube-sa"
-}
-
 variable "plugins" {
   description = "The list of plugins that will be installed on SonarQube"
   type        = list(string)
@@ -64,7 +58,7 @@ variable "volume_capacity" {
 variable "storage_class" {
   type        = string
   description = "The storage class of the persistence volume claim"
-  default     = "ibmc-file-gold"
+  default     = ""
 }
 
 variable "postgresql" {
