@@ -33,7 +33,7 @@ variable "helm_version" {
 variable "service_account_name" {
   description = "The name of the service account that should be used for the deployment"
   type        = string
-  default     = "sonarqube-sonarqube"
+  default     = "sonarqube-sa"
 }
 
 variable "plugins" {
@@ -64,7 +64,7 @@ variable "volume_capacity" {
 variable "storage_class" {
   type        = string
   description = "The storage class of the persistence volume claim"
-  default     = "ibmc-file-gold"
+  default     = ""
 }
 
 variable "postgresql" {
@@ -96,5 +96,11 @@ variable "gitops_dir" {
 variable "mode" {
   type        = string
   description = "The mode of operation for the module (setup)"
+  default     = ""
+}
+
+variable "toolkit_namespace" {
+  type        = string
+  description = "Namespace where the toolkit config jobs run."
   default     = ""
 }
