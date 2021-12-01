@@ -12,7 +12,7 @@ metadata:
   name: sonarqube-sonarqube
   labels:
     app: sonarqube
-    chart: sonarqube-6.6.0
+    chart: sonarqube-1.1.9
     release: sonarqube
     heritage: Helm
 type: Opaque
@@ -51,7 +51,7 @@ metadata:
   name: sonarqube-sonarqube-config
   labels:
     app: sonarqube
-    chart: sonarqube-6.6.0
+    chart: sonarqube-1.1.9
     release: sonarqube
     heritage: Helm
 data:
@@ -63,7 +63,7 @@ metadata:
   name: sonarqube-sonarqube-copy-plugins
   labels:
     app: sonarqube
-    chart: sonarqube-6.6.0
+    chart: sonarqube-1.1.9
     release: sonarqube
     heritage: Helm
 data:
@@ -90,7 +90,7 @@ metadata:
   name: sonarqube-sonarqube-install-plugins
   labels:
     app: sonarqube
-    chart: sonarqube-6.6.0
+    chart: sonarqube-1.1.9
     release: sonarqube
     heritage: Helm
 data:
@@ -104,7 +104,7 @@ metadata:
   name: sonarqube-sonarqube-postgres-config
   labels:
     app: sonarqube
-    chart: sonarqube-6.6.0
+    chart: sonarqube-1.1.9
     release: sonarqube
     heritage: Helm
 data:
@@ -118,7 +118,7 @@ metadata:
   name: sonarqube-sonarqube-tests
   labels:
     app: sonarqube
-    chart: sonarqube-6.6.0
+    chart: sonarqube-1.1.9
     release: sonarqube
     heritage: Helm
 data:
@@ -195,7 +195,7 @@ metadata:
   name: sonarqube-sonarqube
   labels:
     app: sonarqube
-    chart: sonarqube-6.6.0
+    chart: sonarqube-1.1.9
     release: sonarqube
     heritage: Helm
 
@@ -425,7 +425,7 @@ metadata:
     "helm.sh/hook": test-success
   labels:
     app: sonarqube
-    chart: sonarqube-6.6.0
+    chart: sonarqube-1.1.9
     release: sonarqube
     heritage: Helm
 spec:

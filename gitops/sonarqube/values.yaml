@@ -1,0 +1,95 @@
+"config-service-account":
+  "name": "sonarqube-config"
+  "roles":
+  - "apiGroups":
+    - ""
+    "resources":
+    - "secrets"
+    - "configmaps"
+    "verbs":
+    - "*"
+"global":
+  "clusterType": "ocp4"
+  "ingressSubdomain": "toolkit-dev-ocp46b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
+  "storageClass": "ibmc-file-gold"
+"ocp-route":
+  "app": "sonarqube"
+  "insecurePolicy": "Redirect"
+  "nameOverride": "sonarqube"
+  "serviceName": "sonarqube-sonarqube"
+  "targetPort": "http"
+  "termination": "edge"
+"service-account":
+  "create": false
+  "name": "sonarqube-sonarqube"
+  "sccs":
+  - "anyuid"
+  - "privileged"
+"setup-job":
+  "command": "setup-sonarqube"
+  "name": "sonarqube"
+  "secret":
+    "key": "SONARQUBE_URL"
+    "name": "sonarqube-access"
+  "serviceAccountName": "sonarqube-config"
+"sonarqube":
+  "enableTests": false
+  "image":
+    "pullPolicy": "Always"
+  "ingress":
+    "annotations":
+      "ingress.bluemix.net/client-max-body-size": "20m"
+      "ingress.kubernetes.io/proxy-body-size": "20M"
+      "kubernetes.io/ingress.class": "nginx"
+      "nginx.ingress.kubernetes.io/proxy-body-size": "20m"
+    "enabled": false
+    "hosts":
+    - "name": "sonarqube-dev-rr.toolkit-dev-ocp46b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
+    "tls":
+    - "hosts":
+      - "sonarqube-dev-rr.toolkit-dev-ocp46b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
+      "secretName": ""
+  "persistence":
+    "enabled": true
+    "storageClass": "ibmc-file-gold"
+  "plugins":
+    "install":
+    - "https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-2.1.0.4359.jar"
+    - "https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-6.5.1.22586.jar"
+    - "https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-6.2.1.12157.jar"
+    - "https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-2.9.0.6410.jar"
+    - "https://binaries.sonarsource.com/Distribution/sonar-go-plugin/sonar-go-plugin-1.7.0.883.jar"
+    - "https://github.com/checkstyle/sonar-checkstyle/releases/download/4.33/checkstyle-sonar-plugin-4.33.jar"
+  "podLabels":
+    "app.kubernetes.io/part-of": "sonarqube"
+  "postgresql":
+    "enabled": true
+    "master":
+      "labels":
+        "app.kubernetes.io/part-of": "sonarqube"
+      "podLabels":
+        "app.kubernetes.io/part-of": "sonarqube"
+    "persistence":
+      "enabled": false
+      "storageClass": "ibmc-file-gold"
+    "postgresqlDatabase": "sonarDB"
+    "postgresqlPassword": "sonarPass"
+    "postgresqlServer": ""
+    "postgresqlUsername": "sonarUser"
+    "service":
+      "port": "5432"
+    "serviceAccount":
+      "enabled": true
+      "name": "sonarqube-sonarqube"
+    "volumePermissions":
+      "enabled": false
+  "serviceAccount":
+    "create": true
+    "name": "sonarqube-sonarqube"
+"tool-config":
+  "applicationMenu": true
+  "name": "SonarQube"
+  "password": "admin"
+  "privateUrl": "http://sonarqube-sonarqube.dev-rr:9000"
+  "url": "https://sonarqube-dev-rr.toolkit-dev-ocp46b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
+  "username": "admin"
