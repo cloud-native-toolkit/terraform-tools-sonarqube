@@ -249,6 +249,15 @@ spec:
           - /bin/sh
           - -c
           - 'if [[ "$(sysctl -n vm.max_map_count)" -lt 262144 ]]; then sysctl -w vm.max_map_count=262144; fi'
+      extraInitContainers: 
+        - name: "bootstrap-plugin-folder"
+          image: "busybox"
+          imagePullPolicy: "IfNotPresent"
+          command: ["install", "-d", "-m", "0755", "-o", "1000", "-g", "1000", "/tmp/sonarqube/extensions/plugins"]
+          volumeMounts:
+            - mountPath: /tmp/sonarqube/extensions
+              name: sonarqube
+              subPath: extensions
       containers:
         - name: sonarqube
           image: "sonarqube:8.2-community"
