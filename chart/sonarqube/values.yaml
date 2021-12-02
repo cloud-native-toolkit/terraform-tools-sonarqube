@@ -21,7 +21,7 @@ sonarqube:
   image:
     pullPolicy: Always
   persistence:
-    enabled: false
+    enabled: true
   serviceAccount:
     create: true
     name: sonarqube-sa
