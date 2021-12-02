@@ -78,3 +78,7 @@ setup-job:
   secret:
     name: sonarqube-access
     key: "SONARQUBE_URL"
+mounts:
+    - mountPath: /opt/sonarqube/extensions/plugins
+      name: sonarqube
+      subPath: extensions/plugins
