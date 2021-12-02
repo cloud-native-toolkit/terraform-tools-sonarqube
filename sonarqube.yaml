@@ -245,6 +245,7 @@ spec:
           image: busybox:1.31
           securityContext:
             privileged: true
+            runAsUser: 1000
           command:
           - /bin/sh
           - -c
