@@ -10,7 +10,7 @@
     - "*"
 "global":
   "clusterType": "ocp4"
-  "ingressSubdomain": "toolkit-dev-ocp46b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
+  "ingressSubdomain": "toolkit-dev-ocp47b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
   "storageClass": "ibmc-file-gold"
 "ocp-route":
   "app": "sonarqube"
@@ -44,10 +44,10 @@
       "nginx.ingress.kubernetes.io/proxy-body-size": "20m"
     "enabled": false
     "hosts":
-    - "name": "sonarqube-dev-rr.toolkit-dev-ocp46b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
+    - "name": "sonarqube-dev-rr.toolkit-dev-ocp47b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
     "tls":
     - "hosts":
-      - "sonarqube-dev-rr.toolkit-dev-ocp46b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
+      - "sonarqube-dev-rr.toolkit-dev-ocp47b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
       "secretName": ""
   "persistence":
     "enabled": true
@@ -91,5 +91,5 @@
   "name": "SonarQube"
   "password": "admin"
   "privateUrl": "http://sonarqube-sonarqube.dev-rr:9000"
-  "url": "https://sonarqube-dev-rr.toolkit-dev-ocp46b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
+  "url": "https://sonarqube-dev-rr.toolkit-dev-ocp47b-2ab66b053c14936810608de9a1deac9c-0000.us-east.containers.appdomain.cloud"
   "username": "admin"

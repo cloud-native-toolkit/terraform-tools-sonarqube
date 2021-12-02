@@ -161,7 +161,7 @@ metadata:
     app.kubernetes.io/version: "1.16.0"
     app.kubernetes.io/managed-by: Helm
 rules:
-  - apiGroups: ""
+  - apiGroups: []
     resources:
     - secrets
     - configmaps
