@@ -6,8 +6,8 @@ dependencies:
   repository: https://ibm-garage-cloud.github.io/toolkit-charts/
   version: 0.5.0
 - name: sonarqube
-  repository: https://sonarsource.github.io/helm-chart-sonarqube/
-  version: 1.1.9
+  repository: https://oteemo.github.io/charts
+  version: 9.9.0
 - name: ocp-route
   repository: https://ibm-garage-cloud.github.io/toolkit-charts/
   version: 0.3.0
