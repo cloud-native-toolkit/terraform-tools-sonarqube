@@ -51,7 +51,7 @@
       "secretName": ""
   "persistence":
     "enabled": true
-    "storageClass": "ibmc-file-gold"
+    "storageClass": "ibmc-vpc-block-10iops-tier"
   "plugins":
     "install":
     - "https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-2.1.0.4359.jar"
@@ -70,8 +70,8 @@
       "podLabels":
         "app.kubernetes.io/part-of": "sonarqube"
     "persistence":
-      "enabled": false
-      "storageClass": "ibmc-file-gold"
+      "enabled": true
+      "storageClass": "ibmc-vpc-block-10iops-tier"
     "postgresqlDatabase": "sonarDB"
     "postgresqlPassword": "sonarPass"
     "postgresqlServer": ""
@@ -82,7 +82,7 @@
       "enabled": true
       "name": "sonarqube-sonarqube"
     "volumePermissions":
-      "enabled": false
+      "enabled": true
   "serviceAccount":
     "create": true
     "name": "sonarqube-sonarqube"

@@ -39,9 +39,9 @@ sonarqube:
       enabled: true
       name: sonarqube-sa
     persistence:
-      enabled: false
+      enabled: true
     volumePermissions:
-      enabled: false
+      enabled: true
     master:
       labels:
         "app.kubernetes.io/part-of": "sonarqube"

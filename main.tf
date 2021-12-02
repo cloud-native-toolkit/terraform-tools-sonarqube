@@ -41,7 +41,7 @@ locals {
         storageClass = var.storage_class
       }
       volumePermissions = {
-        enabled = false
+        enabled = true
       }
     }
     ingress = {
