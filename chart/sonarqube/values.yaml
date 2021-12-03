@@ -42,6 +42,7 @@ sonarqube:
       enabled: true
     volumePermissions:
       enabled: true
+      RunAsUser: fsGroup
     master:
       labels:
         "app.kubernetes.io/part-of": "sonarqube"
