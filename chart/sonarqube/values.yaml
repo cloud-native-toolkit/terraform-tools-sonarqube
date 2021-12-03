@@ -50,6 +50,15 @@ sonarqube:
     ingress:
       enabled: false
     enableTests: false
+    extraInitContainers: 
+        - name: "bootstrap-plugin-folder"
+          image: "busybox"
+          imagePullPolicy: "IfNotPresent"
+          command: ["chmod", "-m", "0775", "-o", "1000", "-g", "0", "/opt/sonarqube/sonarqube/extensions/plugins"]
+          volumeMounts:
+            - mountPath: /opt/sonarqube/sonarqube/extensions
+              name: sonarqube
+              subPath: extensions
 
 ocp-route:
   nameOverride: "sonarqube"
@@ -78,7 +87,4 @@ setup-job:
   secret:
     name: sonarqube-access
     key: "SONARQUBE_URL"
-mounts:
-    - mountPath: /opt/sonarqube/extensions/plugins
-      name: sonarqube
-      subPath: extensions/plugins
+
