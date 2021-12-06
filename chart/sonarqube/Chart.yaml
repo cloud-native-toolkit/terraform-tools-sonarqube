@@ -29,8 +29,8 @@ dependencies:
     repository: https://charts.cloudnativetoolkit.dev
     alias: config-service-account
   - name: sonarqube
-    version: 9.9.0
-    repository: https://oteemo.github.io/charts
+    version: 1.1.9+137
+    repository: https://sonarsource.github.io/helm-chart-sonarqube
   - name: ocp-route
     version: 0.5.0
     repository: https://charts.cloudnativetoolkit.dev
