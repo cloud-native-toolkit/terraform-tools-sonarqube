@@ -55,16 +55,12 @@ sonarqube:
         - name: "bootstrap-plugin-folder"
           image: "busybox"
           imagePullPolicy: "IfNotPresent"
-          command: ["chmod", "-m", "0775", "-o", "1000", "-g", "0", "/opt/sonarqube/extensions/plugins"]
+          command: ["chmod", "-m", "0775", "-o", "1000", "-g", "0", "/tmp/sonarqube/extensions/plugins"]
           volumeMounts:
-            - mountPath: /opt/sonarqube/extensions
+            - mountPath: /tmp/sonarqube/extensions
               name: sonarqube
               subPath: extensions
-    volumeMounts:
-            - mountPath: /opt/sonarqube/extensions
-              name: sonarqube
-              subPath: extensions
-
+    
 ocp-route:
   nameOverride: "sonarqube"
   targetPort: "http"
