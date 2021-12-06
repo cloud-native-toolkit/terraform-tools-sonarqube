@@ -42,7 +42,6 @@ sonarqube:
       enabled: true
     volumePermissions:
       enabled: true
-      RunAsUser: fsGroup
     master:
       labels:
         "app.kubernetes.io/part-of": "sonarqube"
@@ -51,15 +50,7 @@ sonarqube:
     ingress:
       enabled: false
     enableTests: false
-    extraInitContainers: 
-        - name: "bootstrap-plugin-folder"
-          image: "busybox"
-          imagePullPolicy: "IfNotPresent"
-          command: ["chmod", "-m", "0775", "-o", "1000", "-g", "0", "/tmp/sonarqube/extensions/plugins"]
-          volumeMounts:
-            - mountPath: /tmp/sonarqube/extensions
-              name: sonarqube
-              subPath: extensions
+    
     
 ocp-route:
   nameOverride: "sonarqube"
