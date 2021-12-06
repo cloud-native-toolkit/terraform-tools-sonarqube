@@ -108,5 +108,5 @@ variable "toolkit_namespace" {
 variable "persistence" {
   type        = bool
   description = "Flag indicating that the resources should be deployed with persistent volumes"
-  default     = true
+  default     = false
 }
