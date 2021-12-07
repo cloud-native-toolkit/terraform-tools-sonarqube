@@ -7,7 +7,7 @@ dependencies:
   version: 0.6.0
 - name: sonarqube
   repository: https://oteemo.github.io/charts
-  version: 1.1.9+137
+  version: 9.9.0
 - name: ocp-route
   repository: https://charts.cloudnativetoolkit.dev
   version: 0.5.0
