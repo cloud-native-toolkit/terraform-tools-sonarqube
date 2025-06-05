@@ -6,8 +6,8 @@ dependencies:
   repository: https://charts.cloudnativetoolkit.dev
   version: 0.6.0
 - name: sonarqube
-  repository: https://oteemo.github.io/charts
-  version: 6.6.0
+  repository: https://SonarSource.github.io/helm-chart-sonarqube
+  version: 2025.3.0
 - name: ocp-route
   repository: https://charts.cloudnativetoolkit.dev
   version: 0.5.0
@@ -17,5 +17,5 @@ dependencies:
 - name: setup-job
   repository: https://charts.cloudnativetoolkit.dev
   version: 0.3.0
-digest: sha256:c979be3c4b11b954105666fe0b3d9da6f3cb02bfbd885f3c861a86a14be3615e
-generated: "2021-11-10T00:30:14.683721-06:00"
+digest: sha256:79bf929da92ded6f574dc41889dd1503ddebacf84a38a922141e8afd2ad9c98a
+generated: "2025-06-04T23:34:58.981132-05:00"
