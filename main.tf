@@ -120,9 +120,7 @@ locals {
   }
 }
 
-module "setup_clis" {
-  source = "github.com/cloud-native-toolkit/terraform-util-clis.git"
-
+data clis_check clis {
   clis = ["helm"]
 }
 
@@ -161,7 +159,7 @@ resource "null_resource" "print-chart" {
   }
 
   provisioner "local-exec" {
-    command = "${module.setup_clis.bin_dir}/helm template sonarqube ${local.chart_dir} -n ${var.releases_namespace}"
+    command = "${data.clis_check.clis.bin_dir}/helm template sonarqube ${local.chart_dir} -n ${var.releases_namespace}"
   }
 }
 
@@ -170,7 +168,7 @@ resource "null_resource" "sonarqube_helm" {
   count      = var.mode != "setup" ? 1 : 0
 
   triggers = {
-    bin_dir    = module.setup_clis.bin_dir
+    bin_dir    = data.clis_check.clis.bin_dir
     namespace  = var.releases_namespace
     kubeconfig = var.cluster_config_file
     name       = "sonarqube"
